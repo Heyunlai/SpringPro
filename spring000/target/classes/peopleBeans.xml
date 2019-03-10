@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean class="self.he.pojo.People" id="people">
+        <property name="name" value="由子"/>
+        <property name="age" value="22"/>
+        <property name="friends">
+            <array>
+                <value>钰子</value>
+                <value>雨子</value>
+                <value>呀子</value>
+            </array>
+        </property>
+        <property name="nums">
+            <list>
+                <value>1</value>
+                <value>3</value>
+                <value>4</value>
+            </list>
+        </property>
+        <property name="grils">
+            <set>
+               <bean class="self.he.pojo.Girl">
+                   <property name="age" value="18"/>
+                   <property name="name" value="Li"/>
+               </bean>
+                <bean class="self.he.pojo.Girl">
+                    <property name="age" value="11"/>
+                    <property name="name" value="She"/>
+                </bean>
+            </set>
+        </property>
+        <property name="goddessMap">
+            <map>
+                <entry key="Li">
+                    <bean class="self.he.pojo.Goddess">
+                        <property name="name" value="Li"/>
+                        <property name="hair" value="Red"/>
+                    </bean>
+                </entry>
+                <entry key="Di">
+                    <bean class="self.he.pojo.Goddess">
+                        <property name="name" value="Di"/>
+                        <property name="hair" value="Black"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+
+
+    </bean>
+</beans>

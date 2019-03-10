@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--byType
+        在上下文中，根据类型寻找cat 中的属性 girl，并以赋值，有且只有一个，否则报错-->
+    <bean class="self.he.pojo.Cat" id="cat" autowire="byType">
+        <property name="name" value="佩奇"/>
+        <property name="color" value="pik"/>
+    </bean>
+    <bean class="self.he.pojo.Girl">
+        <property name="name" value="Li"/>
+        <property name="age"  value="18"/>
+    </bean>
+    <bean class="self.he.pojo.Cat" id="girl">
+        <constructor-arg name="name" value="Li"/>
+        <constructor-arg name="color" value="red"/>
+    </bean>
+</beans>

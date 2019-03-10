@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="self.he.mapper.AccountMapper">
+    <update id="plusMoney">
+       UPDATE account
+       SET balance = balance + #{transactionAmount}
+       where cardNo = #{cardNo}
+    </update>
+    <update id="minusMoney">
+       UPDATE account
+       SET balance = balance - #{transactionAmount}
+       where cardNo = #{cardNo}
+    </update>
+    <update id="updatePwd">
+         UPDATE account
+         SET password = #{pwd2}
+         where cardNo = #{cardNo}
+    </update>
+
+    <select id="getCardNo" resultType="java.lang.Integer">
+       SELECT COUNT(*)
+       FROM account
+       WHERE cardNo=#{cardNo}
+    </select>
+    <select id="getAccount" resultType="self.he.pojo.Account">
+        SELECT *
+        FROM account
+        WHERE cardNo =#{cardNo}
+        and password=#{password}
+    </select>
+    <select id="getBalance" resultType="java.lang.Double">
+        SELECT balance
+        FROM account
+        WHERE cardNo =#{cardNo}
+    </select>
+    <select id="getStatus" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM account
+        WHERE cardNo = #{cardNo}
+        and status = 1
+    </select>
+    <select id="getPassword" resultType="java.lang.String">
+        SELECT password
+        FROM  account
+        WHERE cardNo =#{cardNo}
+    </select>
+</mapper>

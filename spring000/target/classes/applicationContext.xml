@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--将对象的创建-交给spring容器，
+    在配置文件里声明需要的对象。
+    class：Java类的全限定名
+    id: 此对象的昵称方便区分-->
+    <!--<bean class="self.he.pojo.Girl" id="girl">-->
+    <!--</bean>-->
+    <bean class="self.he.pojo.PrettyGirl" id="girl">
+        <property name="name" value="王妃"/>
+    </bean>
+</beans>

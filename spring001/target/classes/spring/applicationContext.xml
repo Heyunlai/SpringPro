@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean class="self.he.service.ProviderService" id="providerService">
+    </bean>
+    <bean class="self.he.service.HelloService" id="helloService">
+    </bean>
+    <!--1 aop是基于代理完成的，所以要激活自动代理-->
+    <aop:aspectj-autoproxy/>
+    <!--2 注册切面-->
+    <bean class="self.he.advice.BeforeAdvice" id="beforeAdvice">
+    </bean>
+    <bean class="self.he.advice.AfterAdvice" id="afterAdvice">
+    </bean>
+    <bean class="self.he.advice.ReturnAdvice" id="returnAdvice">
+    </bean>
+    <!--3 配置切入点等信息-->
+    <aop:config>
+        <aop:aspect id="beforeAspect" ref="beforeAdvice">
+            <!--aop:before 表明前置通知
+                method：指明使用哪个方法切
+                pointcut:切入点
+                          包，类，方法
+            -->
+            <aop:before method="methodBefore" pointcut="execution(* self.he.service.ProviderService.*(..))"></aop:before>
+        </aop:aspect>
+
+        <aop:aspect  ref="afterAdvice">
+            <aop:after method="methodAfter" pointcut="execution(* self.he.service.ProviderService.*(..))"></aop:after>
+        </aop:aspect>
+
+        <aop:aspect ref="returnAdvice">
+            <aop:after-returning method="AfterReturn" returning="returning" pointcut="execution(* self.he.service.HelloService.*(..))"/>
+        </aop:aspect>
+    </aop:config>
+
+
+
+</beans>
